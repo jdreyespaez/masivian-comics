@@ -33,7 +33,7 @@ class App extends Component {
     fetch('/api/comics')
     .then(res => res.json())
     .then(res => {
-      var comicList = res.map( r => r.comic_name);
+      var comicList = res.map( res => res.comic_name);
       this.setState({ comicList });
     });
   };
@@ -104,6 +104,7 @@ class App extends Component {
             <h1 className="display-5">Current comic</h1>
             <FormGroup>
               <Input type="select" onChange={this.handleChangeComic}>
+                { this.state.comicList.lenght === 0 && <option>No comics added.</option>  }
               </Input>
             </FormGroup>
           </Col>
